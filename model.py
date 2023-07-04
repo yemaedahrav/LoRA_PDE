@@ -14,11 +14,6 @@ from collections import OrderedDict
 
 sns.set_style("white")
 
-if torch.cuda.is_available():
-    device = torch.device('cuda')
-else:
-    device = torch.device('cpu')
-
 parser = argparse.ArgumentParser(description ='Reynolds Number')
 parser.add_argument('--Re', type=int, default=60, help='Reynolds Number')
 args = parser.parse_args()
