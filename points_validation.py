@@ -31,7 +31,7 @@ print("Y_col: ", Y_col.shape)
 f.close()
 
 
-f = h5py.File('data\Analytical_Solutions\\boundary\Re_20.h5', 'r')
+f = h5py.File('data\Analytical_Solutions\\boundary\Re_100.h5', 'r')
 #f.visit(printname)
 P_bc = f['P_bc']
 U_bc = f['U_bc']
@@ -44,7 +44,7 @@ print("U_bc: ", U_bc.shape)
 print("V_bc: ", V_bc.shape)
 f.close()
 
-f = h5py.File('data\Analytical_Solutions\colocation\Re_20.h5', 'r')
+f = h5py.File('data\Analytical_Solutions\colocation\Re_100.h5', 'r')
 #f.visit(printname)
 P_col = f['P_col']
 U_col = f['U_col']

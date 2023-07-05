@@ -80,7 +80,7 @@ h5_file.create_dataset('Y_col', data=Y_col)
 h5_file.close()
 
 # Generate and store the analytical solutions in an HDF5 file (for boundary conditions and collocation points)
-for Re in trange(20,101,1):
+for Re in trange(21,101,1):
     nu = 1 / Re
     lamb = 1 / (2 * nu) - np.sqrt(1 / (4 * nu ** 2) + 4 * np.pi ** 2)
 
