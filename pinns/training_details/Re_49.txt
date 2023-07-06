@@ -1,0 +1,22 @@
+Reynolds Number: 49
+Iter 0, Loss: 1.0256e+00, Loss_u: 1.0254e+00, Loss_f: 2.1201e-04 
+Iter 500, Loss: 1.2191e-01, Loss_u: 1.2066e-01, Loss_f: 1.2541e-03 
+Iter 1000, Loss: 5.2422e-02, Loss_u: 4.9219e-02, Loss_f: 3.2025e-03 
+Iter 1500, Loss: 2.5973e-03, Loss_u: 1.9007e-03, Loss_f: 6.9653e-04 
+Iter 2000, Loss: 1.3692e-03, Loss_u: 1.0463e-03, Loss_f: 3.2289e-04 
+Iter 2500, Loss: 1.0113e-03, Loss_u: 7.7113e-04, Loss_f: 2.4021e-04 
+Iter 3000, Loss: 7.8103e-04, Loss_u: 6.1146e-04, Loss_f: 1.6957e-04 
+Iter 3500, Loss: 6.2001e-04, Loss_u: 4.9519e-04, Loss_f: 1.2482e-04 
+Iter 4000, Loss: 5.0209e-04, Loss_u: 4.0778e-04, Loss_f: 9.4314e-05 
+Iter 4500, Loss: 4.2306e-04, Loss_u: 3.4269e-04, Loss_f: 8.0378e-05 
+Iter 5000, Loss: 4.1832e-04, Loss_u: 3.0347e-04, Loss_f: 1.1485e-04 
+Iter 5500, Loss: 3.5773e-04, Loss_u: 2.5651e-04, Loss_f: 1.0122e-04 
+Iter 6000, Loss: 3.1225e-04, Loss_u: 2.3674e-04, Loss_f: 7.5513e-05 
+Iter 6500, Loss: 2.5922e-04, Loss_u: 2.1072e-04, Loss_f: 4.8495e-05 
+Iter 7000, Loss: 2.3974e-04, Loss_u: 1.9261e-04, Loss_f: 4.7129e-05 
+Iter 7500, Loss: 2.2376e-04, Loss_u: 1.7728e-04, Loss_f: 4.6479e-05 
+Iter 8000, Loss: 2.0592e-04, Loss_u: 1.6559e-04, Loss_f: 4.0336e-05 
+Iter 8500, Loss: 2.0776e-04, Loss_u: 1.5562e-04, Loss_f: 5.2140e-05 
+Iter 9000, Loss: 1.9101e-04, Loss_u: 1.4257e-04, Loss_f: 4.8438e-05 
+Iter 9500, Loss: 1.8423e-04, Loss_u: 1.3463e-04, Loss_f: 4.9598e-05 
+Relative L2 Error: 3.046738e-02 
