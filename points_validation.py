@@ -1,9 +1,5 @@
-import math
-import pandas as pd
 import numpy as np
-from scipy.interpolate import griddata
 from pyDOE import lhs
-import argparse
 import h5py
 
 def printname(name):
@@ -36,12 +32,15 @@ f = h5py.File('data\Analytical_Solutions\\boundary\Re_100.h5', 'r')
 P_bc = f['P_bc']
 U_bc = f['U_bc']
 V_bc = f['V_bc']
+S_bc = f['S_bc']
 P_bc = np.asarray(P_bc)
 U_bc = np.asarray(U_bc)
 V_bc = np.asarray(V_bc)
+S_bc = np.asarray(S_bc)
 print("P_bc: ", P_bc.shape)
 print("U_bc: ", U_bc.shape)
 print("V_bc: ", V_bc.shape)
+print("S_bc: ", S_bc.shape)
 f.close()
 
 f = h5py.File('data\Analytical_Solutions\colocation\Re_100.h5', 'r')
@@ -49,10 +48,13 @@ f = h5py.File('data\Analytical_Solutions\colocation\Re_100.h5', 'r')
 P_col = f['P_col']
 U_col = f['U_col']
 V_col = f['V_col']
+S_col = f['S_col']
 P_col = np.asarray(P_col)
 U_col = np.asarray(U_col)
 V_col = np.asarray(V_col)
+S_col = np.asarray(S_col)
 print("P_col: ", P_col.shape)
 print("U_col: ", U_col.shape)
 print("V_col: ", V_col.shape)
+print("S_col: ", S_col.shape)
 f.close()

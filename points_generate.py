@@ -80,7 +80,7 @@ h5_file.create_dataset('Y_col', data=Y_col)
 h5_file.close()
 
 # Generate and store the analytical solutions in an HDF5 file (for boundary conditions and collocation points)
-for Re in trange(21,101,1):
+for Re in trange(10,101,1):
     nu = 1 / Re
     lamb = 1 / (2 * nu) - np.sqrt(1 / (4 * nu ** 2) + 4 * np.pi ** 2)
 
@@ -90,11 +90,13 @@ for Re in trange(21,101,1):
     U_col = np.reshape(U_col, (-1, 1))
     V_col = np.reshape(V_col, (-1, 1))
     P_col = np.reshape(P_col, (-1, 1))
+    S_col = np.hstack((U_col, V_col, P_col))
     filename = 'data\Analytical_Solutions\colocation\Re_' + str(Re) + '.h5'
     h5_file = h5py.File(filename, 'w')
     h5_file.create_dataset('U_col', data=U_col)
     h5_file.create_dataset('V_col', data=V_col)
     h5_file.create_dataset('P_col', data=P_col)
+    h5_file.create_dataset('S_col', data=S_col)
     h5_file.close()
 
     U_bc = 1-(np.exp(lamb*X_bc))*(np.cos(2*math.pi*Y_bc))
@@ -103,11 +105,13 @@ for Re in trange(21,101,1):
     U_bc = np.reshape(U_bc, (-1, 1))
     V_bc = np.reshape(V_bc, (-1, 1))
     P_bc = np.reshape(P_bc, (-1, 1))
+    S_bc = np.hstack((U_bc, V_bc, P_bc))
     filename = 'data\Analytical_Solutions\\boundary\Re_' + str(Re) + '.h5'
     h5_file = h5py.File(filename, 'w')
     h5_file.create_dataset('U_bc', data=U_bc)
     h5_file.create_dataset('V_bc', data=V_bc)
     h5_file.create_dataset('P_bc', data=P_bc)
+    h5_file.create_dataset('S_bc', data=S_bc)
     h5_file.close()
 
 
