@@ -7,9 +7,12 @@ import h5py
 from tqdm import trange
 from pyDOE import lhs
 
+random_seed = 1
+np.random.seed(random_seed)
+
 parser = argparse.ArgumentParser(description ='Colocation Points Generation')
 parser.add_argument('--col', type=int, default=2500, help='number of collocation points')
-parser.add_argument('--bc', type=int, default=50, help='number of boundary data points along each edge')
+parser.add_argument('--bc', type=int, default=100, help='number of boundary data points along each edge')
 args = parser.parse_args()
 
 # Hyperparameters and model architecture
