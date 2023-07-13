@@ -20,3 +20,6 @@ Iter 8500, Loss: 1.2485e+00, Loss_u: 1.2324e+00, Loss_f: 1.6101e-02
 Iter 9000, Loss: 1.1618e+00, Loss_u: 1.1475e+00, Loss_f: 1.4337e-02 
 Iter 9500, Loss: 1.0996e+00, Loss_u: 1.0786e+00, Loss_f: 2.0969e-02 
 Relative L2 Error: 8.172745e-01 
+Reynolds Number: 10
+Epoch 0, LR: 1.0000e-02, Loss: 1.1124e+01, Data Loss: 1.1124e+01, Physics Loss: 2.6497e-05Reynolds Number: 10
+Epoch 0, LR: 1.0000e-02, Loss: 1.1124e+01, Data Loss: 1.1124e+01, Physics Loss: 2.6497e-05
