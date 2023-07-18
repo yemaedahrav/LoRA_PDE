@@ -135,6 +135,7 @@ for epoch in range(iterations):
 
     Loss.backward()
     optimizer.step()
+    scheduler.step()
 
     with torch.autograd.no_grad():
         if epoch%1000 == 0:
@@ -142,10 +143,14 @@ for epoch in range(iterations):
             f1.write('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
             print('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
 
-# Relative L2 Error
+
 S_pinn = pinn(X_col, Y_col)
+# Mean L2 Error
+error = torch.linalg.norm(S_col-S_pinn,2)
+f1.write('Mean L2 Error: %.4e \n' % (error))
+# Relative L2 Error
 L2_error = torch.linalg.norm(S_col-S_pinn,2)/torch.linalg.norm(S_col,2)
-f1.write('Relative L2 Error: %e \n' % (L2_error))
+f1.write('Relative L2 Error: %.4e \n' % (L2_error))
 f1.close()
 
 # Save weights to file
