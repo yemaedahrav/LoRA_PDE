@@ -5,5 +5,5 @@ from tqdm import trange
 #     os.system('python pinn_model.py --Re '+str(Re))
 
 Re_in = 100
-for Re_out in trange(10,11,1):
+for Re_out in trange(20,101,1):
     os.system('python pinn_finetuning_model.py --Re_out '+str(Re_out)+' --Re_in '+str(Re_in))

@@ -93,7 +93,7 @@ pinn = pinn.to(device)
 pinn.load_state_dict(torch.load('pinns/pretrained/weights/model_'+str(args.Re_in)+'.pt'), strict=False)
 mse_cost_function = nn.MSELoss() 
 optimizer = torch.optim.Adam(pinn.parameters(), lr=1e-2)
-scheduler = lr_scheduler.StepLR(optimizer, step_size=8000, gamma=0.1, last_epoch=-1, verbose=False)
+scheduler = lr_scheduler.StepLR(optimizer, step_size=5000, gamma=0.1, last_epoch=-1, verbose=False)
 
 def residual(x, y, pinn):
     s = pinn.forward(x, y)
@@ -121,7 +121,7 @@ def residual(x, y, pinn):
     return f
 
 
-iterations = 50000
+iterations = 30000
 for epoch in range(iterations):
     optimizer.zero_grad()
     
