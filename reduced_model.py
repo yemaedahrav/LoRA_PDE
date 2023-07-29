@@ -26,7 +26,7 @@ args = parser.parse_args()
 Re = args.Re_out
 nu = 1/Re
 
-f1 = open('pinns/finetuned/finetuning_details/Re_{}.txt'.format(Re), 'a+')
+f1 = open('pinns/reduced_finetuned/finetuning_details/Re_{}.txt'.format(Re), 'a+')
 f1.write('Input Reynolds Number: {}\n'.format(Re))
 f1.write('Output Reynolds Number: {}\n'.format(args.Re_in))
 
@@ -65,17 +65,49 @@ Y_col = Variable(torch.from_numpy(Y_col).float(), requires_grad=True).to(device)
 S_col = Variable(torch.from_numpy(S_col).float(), requires_grad=True).to(device)
 S = torch.zeros_like(X_col).to(device)
 
+# Custom linear layer which will take the trained weights and learn two parameters Aand B
+class CustomLinear(nn.Module):
+    def __init__(self, size_in, size_out, W, B):
+        super().__init__()
+        self.size_in = size_in
+        self.size_out = size_out
+        row_vector = torch.Tensor(size_out, 1)
+        col_vector = torch.Tensor(1, size_in)
+        self.row_vector = nn.Parameter(row_vector)
+        self.col_vector = nn.Parameter(col_vector)
+        #W =  Variable(torch.from_numpy(W).float(), requires_grad=False).to(device)
+        #B =  Variable(torch.from_numpy(B).float(), requires_grad=True).to(device)
+        self.bias = nn.Parameter(B)
+        self.W = W
 
+        nn.init.xavier_uniform_(self.row_vector)
+        nn.init.xavier_uniform_(self.col_vector)
+
+    def forward(self, x):
+        RV = torch.mm(self.row_vector, self.col_vector)
+        W_ = torch.add(self.W, RV)
+        WX = torch.mm(x, W_.T)
+        return torch.add(WX, self.bias)
+    
+    
 class PINN(nn.Module):
-    def __init__(self):
+    def __init__(self, weights):
         super(PINN, self).__init__()
-        self.layer1 = nn.Linear(2,20)
-        self.layer2 = nn.Linear(20,20)
-        self.layer3 = nn.Linear(20,20)
-        self.layer4 = nn.Linear(20,20)
-        self.layer5 = nn.Linear(20,20)
-        self.layer6 = nn.Linear(20,20)
-        self.output_layer = nn.Linear(20,3)
+        self.weights = weights
+        W1, B1 = self.weights[0, :40].view(20, 2), weights[0, 40:60].view(20)
+        self.layer1 = CustomLinear(2, 20, W1, B1)
+        W2, B2 = self.weights[0, 60:460].view(20, 20), weights[0, 460:480].view(20)
+        self.layer2 = CustomLinear(20, 20, W2, B2)
+        W3, B3 = self.weights[0, 480:880].view(20, 20), weights[0, 880:900].view(20)
+        self.layer3 = CustomLinear(20, 20, W3, B3)
+        W4, B4 = self.weights[0, 900:1300].view(20, 20), weights[0, 1300:1320].view(20)
+        self.layer4 = CustomLinear(20, 20, W4, B4)
+        W5, B5 = self.weights[0, 1320:1720].view(20, 20), weights[0, 1720:1740].view(20)
+        self.layer5 = CustomLinear(20, 20, W5, B5)
+        W6, B6 = self.weights[0, 1740:2140].view(20, 20), weights[0, 2140:2160].view(20)
+        self.layer6 = CustomLinear(20, 20, W6, B6)
+        W7, B7 = self.weights[0, 2160:2220].view(3, 20), weights[0, 2220:2223].view(3)
+        self.output_layer = CustomLinear(20, 3, W7, B7)
 
     def forward(self, x, y): 
         inputs = torch.cat([x, y], axis=1)
@@ -88,12 +120,14 @@ class PINN(nn.Module):
         output = self.output_layer(layer6_out) 
         return output
     
-pinn = PINN()
+trained_weights = np.loadtxt('pinns/pretrained/weights/weights_'+str(args.Re_in)+'.txt')
+trained_weights = trained_weights.reshape((1,2223))
+trained_weights = Variable(torch.from_numpy(trained_weights).float(), requires_grad=False).to(device)
+pinn = PINN(trained_weights)
 pinn = pinn.to(device)
-pinn.load_state_dict(torch.load('pinns/pretrained/weights/model_'+str(args.Re_in)+'.pt'), strict=False)
 mse_cost_function = nn.MSELoss() 
 optimizer = torch.optim.Adam(pinn.parameters(), lr=1e-2)
-scheduler = lr_scheduler.StepLR(optimizer, step_size=5000, gamma=0.1, last_epoch=-1, verbose=False)
+scheduler = lr_scheduler.StepLR(optimizer, step_size=8000, gamma=0.1, last_epoch=-1, verbose=False)
 
 def residual(x, y, pinn):
     s = pinn.forward(x, y)
@@ -121,7 +155,7 @@ def residual(x, y, pinn):
     return f
 
 
-iterations = 30000
+iterations = 40000
 for epoch in range(iterations):
     optimizer.zero_grad()
     
@@ -140,7 +174,7 @@ for epoch in range(iterations):
     with torch.autograd.no_grad():
         if epoch%1000 == 0:
             current_lr = optimizer.param_groups[0]['lr']
-            f1.write('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e\n' % (epoch, current_lr, Loss, MSE_U, MSE_F))
+            f1.write('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
             print('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
 
 
@@ -161,6 +195,6 @@ for key in params.keys():
     for val in flattened_tensor:
         flattened_weights.append(val)
 weights_array = np.array(flattened_weights)
-np.savetxt('pinns/finetuned/weights/weights_'+str(Re)+'.txt', weights_array)
+np.savetxt('pinns/reduced_finetuned/weights/weights_'+str(Re)+'.txt', weights_array)
 
-torch.save(pinn.state_dict(), 'pinns/finetuned/weights/model_'+str(Re)+'.pt')
+torch.save(pinn.state_dict(), 'pinns/reduced_finetuned/weights/model_'+str(Re)+'.pt')
