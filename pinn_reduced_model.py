@@ -174,7 +174,7 @@ for epoch in range(iterations):
     with torch.autograd.no_grad():
         if epoch%1000 == 0:
             current_lr = optimizer.param_groups[0]['lr']
-            f1.write('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
+            f1.write('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e\n' % (epoch, current_lr, Loss, MSE_U, MSE_F))
             print('Epoch %d, LR: %.4e, Loss: %.4e, Data Loss: %.4e, Physics Loss: %.4e' % (epoch, current_lr, Loss, MSE_U, MSE_F))
 
 
