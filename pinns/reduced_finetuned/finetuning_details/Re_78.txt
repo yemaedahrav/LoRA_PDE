@@ -1,0 +1,44 @@
+Input Reynolds Number: 78
+Output Reynolds Number: 100
+Epoch 0, LR: 1.0000e-02, Loss: 6.3207e+01, Data Loss: 2.8898e+00, Physics Loss: 6.0317e+01
+Epoch 1000, LR: 1.0000e-02, Loss: 8.3465e-02, Data Loss: 8.0492e-02, Physics Loss: 2.9728e-03
+Epoch 2000, LR: 1.0000e-02, Loss: 7.2900e-02, Data Loss: 7.0890e-02, Physics Loss: 2.0105e-03
+Epoch 3000, LR: 1.0000e-02, Loss: 5.8924e-02, Data Loss: 5.7260e-02, Physics Loss: 1.6637e-03
+Epoch 4000, LR: 1.0000e-02, Loss: 5.9464e-03, Data Loss: 4.1795e-03, Physics Loss: 1.7669e-03
+Epoch 5000, LR: 1.0000e-02, Loss: 3.3333e-03, Data Loss: 1.9622e-03, Physics Loss: 1.3711e-03
+Epoch 6000, LR: 1.0000e-02, Loss: 1.5859e-03, Data Loss: 1.1642e-03, Physics Loss: 4.2172e-04
+Epoch 7000, LR: 1.0000e-02, Loss: 2.3623e-03, Data Loss: 1.4570e-03, Physics Loss: 9.0534e-04
+Epoch 8000, LR: 1.0000e-03, Loss: 8.1895e-04, Data Loss: 5.7079e-04, Physics Loss: 2.4816e-04
+Epoch 9000, LR: 1.0000e-03, Loss: 6.1344e-04, Data Loss: 4.9000e-04, Physics Loss: 1.2345e-04
+Epoch 10000, LR: 1.0000e-03, Loss: 5.6402e-04, Data Loss: 4.4785e-04, Physics Loss: 1.1616e-04
+Epoch 11000, LR: 1.0000e-03, Loss: 5.0240e-04, Data Loss: 3.9532e-04, Physics Loss: 1.0708e-04
+Epoch 12000, LR: 1.0000e-03, Loss: 4.2692e-04, Data Loss: 3.3218e-04, Physics Loss: 9.4741e-05
+Epoch 13000, LR: 1.0000e-03, Loss: 3.5793e-04, Data Loss: 2.7564e-04, Physics Loss: 8.2291e-05
+Epoch 14000, LR: 1.0000e-03, Loss: 3.1006e-04, Data Loss: 2.3616e-04, Physics Loss: 7.3901e-05
+Epoch 15000, LR: 1.0000e-03, Loss: 2.7621e-04, Data Loss: 2.0741e-04, Physics Loss: 6.8798e-05
+Epoch 16000, LR: 1.0000e-04, Loss: 2.7667e-04, Data Loss: 1.8617e-04, Physics Loss: 9.0499e-05
+Epoch 17000, LR: 1.0000e-04, Loss: 2.4505e-04, Data Loss: 1.8202e-04, Physics Loss: 6.3026e-05
+Epoch 18000, LR: 1.0000e-04, Loss: 2.4019e-04, Data Loss: 1.7799e-04, Physics Loss: 6.2209e-05
+Epoch 19000, LR: 1.0000e-04, Loss: 2.3270e-04, Data Loss: 1.7178e-04, Physics Loss: 6.0920e-05
+Epoch 20000, LR: 1.0000e-04, Loss: 2.2147e-04, Data Loss: 1.6257e-04, Physics Loss: 5.8897e-05
+Epoch 21000, LR: 1.0000e-04, Loss: 2.0611e-04, Data Loss: 1.5033e-04, Physics Loss: 5.5783e-05
+Epoch 22000, LR: 1.0000e-04, Loss: 1.9132e-04, Data Loss: 1.3884e-04, Physics Loss: 5.2475e-05
+Epoch 23000, LR: 1.0000e-04, Loss: 1.7794e-04, Data Loss: 1.2900e-04, Physics Loss: 4.8936e-05
+Epoch 24000, LR: 1.0000e-05, Loss: 1.6628e-04, Data Loss: 1.2057e-04, Physics Loss: 4.5707e-05
+Epoch 25000, LR: 1.0000e-05, Loss: 1.6489e-04, Data Loss: 1.1958e-04, Physics Loss: 4.5313e-05
+Epoch 26000, LR: 1.0000e-05, Loss: 1.6272e-04, Data Loss: 1.1803e-04, Physics Loss: 4.4687e-05
+Epoch 27000, LR: 1.0000e-05, Loss: 1.5943e-04, Data Loss: 1.1570e-04, Physics Loss: 4.3730e-05
+Epoch 28000, LR: 1.0000e-05, Loss: 1.5471e-04, Data Loss: 1.1236e-04, Physics Loss: 4.2349e-05
+Epoch 29000, LR: 1.0000e-05, Loss: 1.4855e-04, Data Loss: 1.0804e-04, Physics Loss: 4.0517e-05
+Epoch 30000, LR: 1.0000e-05, Loss: 1.4255e-04, Data Loss: 1.0384e-04, Physics Loss: 3.8711e-05
+Epoch 31000, LR: 1.0000e-05, Loss: 1.3708e-04, Data Loss: 1.0005e-04, Physics Loss: 3.7029e-05
+Epoch 32000, LR: 1.0000e-06, Loss: 1.3208e-04, Data Loss: 9.6642e-05, Physics Loss: 3.5440e-05
+Epoch 33000, LR: 1.0000e-06, Loss: 1.3150e-04, Data Loss: 9.6246e-05, Physics Loss: 3.5257e-05
+Epoch 34000, LR: 1.0000e-06, Loss: 1.3072e-04, Data Loss: 9.5718e-05, Physics Loss: 3.5003e-05
+Epoch 35000, LR: 1.0000e-06, Loss: 1.2974e-04, Data Loss: 9.5056e-05, Physics Loss: 3.4687e-05
+Epoch 36000, LR: 1.0000e-06, Loss: 1.2861e-04, Data Loss: 9.4282e-05, Physics Loss: 3.4327e-05
+Epoch 37000, LR: 1.0000e-06, Loss: 1.2738e-04, Data Loss: 9.3445e-05, Physics Loss: 3.3938e-05
+Epoch 38000, LR: 1.0000e-06, Loss: 1.2613e-04, Data Loss: 9.2597e-05, Physics Loss: 3.3534e-05
+Epoch 39000, LR: 1.0000e-06, Loss: 1.2490e-04, Data Loss: 9.1772e-05, Physics Loss: 3.3129e-05
+Mean L2 Error: 1.4180e+00 
+Relative L2 Error: 2.3690e-02 
